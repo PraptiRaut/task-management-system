@@ -41,8 +41,8 @@ function createTaskElement(task) {
     <div class="task-actions">
     <button class="btn-complete" data-id="${task.id}">
     ${task.status === "pending" ? "Done" : "Undo"}</button>
-    <button class="task-edit" data-id="${task.id}">Edit</button>
-    <button class="task-delete" data-id="${task.id}">Delete</button>
+    <button class="btn-edit" data-id="${task.id}">Edit</button>
+    <button class="btn-delete" data-id="${task.id}">Delete</button>
     </div>
     `;
     return li
