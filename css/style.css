@@ -132,3 +132,36 @@ body {
     color: var(--text-secondary);
     margin-top: 1rem;
 }
+
+/* TASK CARD */
+.task-card {
+    background-color: var(--surface);
+    padding: 1rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: relative;
+}
+
+.task-title {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.task-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.task-priority {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #fff;
+}
