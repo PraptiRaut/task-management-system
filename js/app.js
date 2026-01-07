@@ -5,11 +5,25 @@ const priorityInput = document.getElementById("task-priority");
 const dueDateInput = document.getElementById("task-due-date");
 const filterSelect = document.getElementById("filter-tasks");
 const sortSelect = document.getElementById("sort-tasks");
+const themeToggleBtn = document.getElementById("theme-toggle");
 
 //Load task on page load
 document.addEventListener("DOMContentLoaded", () => {
     renderTasks(getTasks());
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark");
+        themeToggleBtn.textContent = "☀️";
+    }
 });
+
+//theme toggle handler
+themeToggleBtn.addEventListener("click", function () {
+    document.body.classList.toggle("dark");
+    const isDark = document.body.classList.contains("dark");
+    themeToggleBtn.textContent = isDark ? "☀️" : "🌙";
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+})
 
 //form submission handle
 taskForm.addEventListener("submit", function (e) {

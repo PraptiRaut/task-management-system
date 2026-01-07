@@ -10,6 +10,34 @@
     --danger: #dc2626;
     --radius: 10px;
     --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --input-bg: #ffffff;
+    --input-border: #d1d5db;
+}
+
+/* dark mode theme */
+
+body.dark {
+    /* --bg: #394052; */
+    --bg: #121212;
+    /* --surface: #242931; */
+    --surface: rgba(30, 30, 30, 0.9);
+    --primary: #2564eba3;
+    --text-primary: #e3dada;
+
+    --text-secondary: #94a3b8;
+
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    /* --input-bg: rgba(255, 255, 255, 0.05); */
+    --input-bg: rgba(255, 255, 255, 0.1);
+    --input-border: #334155;
+    --sucess: #24964e;
+    --warning: #c18c31;
+    --danger: #9d3939;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+body.dark select option {
+    color: #111827;
 }
 
 /* BASE RESET */
@@ -24,6 +52,7 @@ body {
     background-color: var(--bg);
     color: var(--text-primary);
     line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -88,11 +117,33 @@ body {
 
 .task-form-section input,
 .task-form-section textarea,
-.task-form-section select {
+.task-form-section select,
+.task-controls select {
     padding: 0.6rem;
     border-radius: var(--radius);
-    border: 1px solid #d1d5db;
+    border: 1px solid var(--input-border);
     font-size: 0.9rem;
+    background-color: var(--input-bg);
+    color: var(--text-primary);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* .task-form-section select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg width='20' height='20' fill='gray' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.25a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.6rem center;
+    background-size: 1rem;
+} */
+
+.task-form-section input:focus,
+.task-form-section textarea:focus,
+.task-form-section select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 1px rgba(37, 100, 235, 0.3);
 }
 
 .task-form-section button {
@@ -118,7 +169,7 @@ body {
     flex: 1;
     padding: 0.6rem;
     border-radius: var(--radius);
-    border: 1px solid #d1d5db;
+    border: 1px solid var(--input-border);
 }
 
 .task-list-section ul {
@@ -145,6 +196,7 @@ body {
     position: relative;
 }
 
+/* TASK TITLE & DESCRIPTION */
 .task-title {
     font-size: 1rem;
     font-weight: 600;
@@ -155,6 +207,7 @@ body {
     color: var(--text-secondary);
 }
 
+/* PRIORITY BADGE */
 .task-priority {
     position: absolute;
     top: 1rem;
@@ -164,4 +217,88 @@ body {
     font-size: 0.7rem;
     font-weight: 600;
     color: #fff;
+}
+
+.priority-high {
+    background-color: var(--danger);
+}
+
+.priority-medium {
+    background-color: var(--warning);
+}
+
+.priority-low {
+    background-color: var(--sucess);
+}
+
+/* TASK META INFO */
+.task-meta {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    display: flex;
+    justify-content: space-between;
+}
+
+/* COMPLETED TASK STYLE */
+.task-card.completed {
+    opacity: 0.7;
+}
+
+.task-card.completed .task-title {
+    text-decoration: line-through;
+}
+
+/* ACTION BUTTONS */
+.task-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.task-actions button {
+    flex: 1;
+    padding: 0.4rem;
+    font-size: 0.8rem;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+}
+
+.btn-complete {
+    background-color: var(--sucess);
+    color: #fff;
+}
+
+.btn-edit {
+    background-color: var(--warning);
+    color: #fff;
+}
+
+.btn-delete {
+    background-color: var(--danger);
+    color: #fff;
+}
+
+/* DESKTOP RESPONSIVENESS */
+
+@media (min-width:768) {
+    .task-insights {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .task-form-section form {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .task-form-section textarea {
+        grid-column: span 2;
+    }
+
+    .task-form-section button {
+        grid-column: span 2;
+    }
+
+    .task-controls {
+        justify-content: space-between;
+    }
 }
