@@ -4,6 +4,7 @@ const descInput = document.getElementById("task-desc");
 const priorityInput = document.getElementById("task-priority");
 const dueDateInput = document.getElementById("task-due-date");
 const filterSelect = document.getElementById("filter-tasks");
+const sortSelect = document.getElementById("sort-tasks");
 
 //Load task on page load
 document.addEventListener("DOMContentLoaded", () => {
@@ -77,10 +78,10 @@ function applyFilter(filterType) {
 
         case "overdue":
             filteredTasks = tasks.filter(task => {
-                if (tasks.status !== "pending" || !tasks.dueDate) {
+                if (task.status !== "pending" || !task.dueDate) {
                     return false;
                 }
-                return new Date(tasks.dueDate) < new Date();
+                return new Date(task.dueDate) < new Date();
             });
             break;
 
@@ -88,9 +89,47 @@ function applyFilter(filterType) {
             filteredTasks = tasks;
     }
 
-    renderTasks(filteredTasks);
+    const sortedTasks = applySorting(
+        filteredTasks,
+        sortSelect.value
+    );
+
+    renderTasks(sortedTasks);
 }
 
 filterSelect.addEventListener("change", function () {
     applyFilter(this.value);
+})
+
+//sort by filter
+const PRIORITY_ORDER = {
+    High: 1,
+    Medium: 2,
+    Low: 3
+};
+
+//sort function
+function applySorting(tasks, sortType) {
+    const sortedTasks = [...tasks];
+
+    if (sortType === "date") {
+        sortedTasks.sort((a, b) => {
+            if (!a.dueDate) return 1;
+            if (!b.dueDate) return -1;
+            return new Date(a.dueDate) - new Date(b.dueDate);
+        });
+    }
+
+    if (sortType === "priority") {
+        sortedTasks.sort((a, b) => {
+            return PRIORITY_ORDER[a.priority] - PRIORITY_ORDER[b.priority];
+        });
+    }
+
+    return sortedTasks;
+}
+
+//sort change handler
+sortSelect.addEventListener("change", function () {
+    applyFilter(filterSelect.value);
 })
