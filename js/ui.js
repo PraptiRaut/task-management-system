@@ -4,6 +4,7 @@ const emptyStateEl = document.getElementById("empty-state");
 
 //Render all tasks
 function renderTasks(tasks) {
+    updateTaskInsights(tasks);
     taskListEl.innerHTML = "";
 
     if (tasks.length === 0) {
@@ -54,4 +55,29 @@ function formatDate(dateString) {
 
     const date = new Date(dateString);
     return date.toLocaleDateString();
+}
+
+//smart task insights
+const totalTasksEl = document.getElementById("total-tasks");
+const completedTasksEl = document.getElementById("completed-tasks");
+const pendingTasksEl = document.getElementById("pending-tasks");
+const overdueTasksEl = document.getElementById("overdue-tasks");
+
+//update insights
+function updateTaskInsights(tasks) {
+    const total = tasks.length;
+    const completed = tasks.filter(task => task.status === "completed").length;
+    const pending = tasks.filter(task => task.status === "pending").length;
+    const overdue = tasks.filter(task => {
+        if (task.status !== "pending" || !task.dueDate) {
+            return false;
+        }
+        return new Date(task.dueDate) < new Date();
+    }).length;
+
+    totalTasksEl.textContent = total;
+    completedTasksEl.textContent = completed;
+    pendingTasksEl.textContent = pending;
+    overdueTasksEl.textContent = overdue;
+
 }
