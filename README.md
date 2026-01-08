@@ -1,2 +1,59 @@
-# task-management-system
-Task Management System built using HTML, CSS, and JavaScript
+# Task Management System
+A modern Task Management System built using HTML, CSS, and Vanilla JavaScript.  
+This application helps users manage daily tasks efficiently with features like task creation, filtering, sorting, persistent storage, and dark mode.
+
+🔗 **Live Demo:**  
+https://praptiraut.github.io/task-management-system/
+
+## ✨ Features
+- Add new tasks with title, description, priority, and   due date
+- Edit and delete tasks
+- Mark tasks as completed or pending
+- Persistent storage using localStorage
+- Filter tasks (All, Completed, Pending, Overdue)
+- Sort tasks by priority, and due date
+- Smart task insights dashboard
+- Dark mode with saved preference
+- Fully responsive design
+
+## 🛠️ Technologies Used
+- HTML5
+- CSS3
+- JavaScript (ES6)
+- Git & GitHub
+- GitHub Pages
+
+## 📂 Project Structure
+task-management-system/
+├── css/
+│   └── style.css
+│
+├── js/
+│   ├── app.js
+│   ├── data.js
+│   └── ui.js
+│
+├── index.html
+├── README.md
+└── .gitignore
+
+## 🚀 How to Run Locally
+1. Download or clone the repository
+2. Open the project folder
+3. Open index.html in your browser or use VS Code Live Server
+
+## 🧠 What I Learned
+- JavaScript DOM manipulation
+- localStorage for data persistence
+- Filtering and sorting logic
+- Event delegation
+- Dark mode using CSS variables
+- Deploying frontend projects using GitHub Pages
+
+## 📌 Future Improvements
+- Edit task using modal
+- Drag and drop tasks
+- Accessibility improvements
+
+## 🙌 Conclusion
+This project was built as a learning-focused, resume-ready frontend project to strengthen core web development skills.
