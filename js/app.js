@@ -30,17 +30,32 @@ taskForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
     const title = titleInput.value.trim();
+
     if (!title) {
         alert("Task title is required");
         return;
     }
 
-    addTask({
-        title: title,
-        description: descInput.value,
-        priority: priorityInput.value,
-        dueDate: dueDateInput.value
-    })
+    if (editTaskId) {
+
+        updateTask(editTaskId, {
+            title: title,
+            description: descInput.value,
+            priority: priorityInput.value,
+            dueDate: dueDateInput.value
+        });
+
+        editTaskId = null;
+        document.querySelector("#task-form button").textContent = "Add Task";
+    } else {
+
+        addTask({
+            title: title,
+            description: descInput.value,
+            priority: priorityInput.value,
+            dueDate: dueDateInput.value
+        })
+    }
 
     //refresh UI
     filterSelect.value = "all";
@@ -50,7 +65,10 @@ taskForm.addEventListener("submit", function (e) {
     taskForm.reset();
 });
 
-//task action handle
+//edit task
+let editTaskId = null;
+
+//task action handle - complete, delete, edit
 document.getElementById("task-list").addEventListener("click", function (e) {
     const button = e.target.closest("button");
     if (!button) return;
@@ -66,6 +84,26 @@ document.getElementById("task-list").addEventListener("click", function (e) {
         renderTasks(getTasks());
     }
 
+    //edit task
+    if (e.target.classList.contains("btn-edit")) {
+        const tasks = getTasks();
+        const taskToEdit = tasks.find(task => task.id === taskId);
+        if (!taskToEdit) return;
+
+        //fill form inputs
+        titleInput.value = taskToEdit.title;
+        descInput.value = taskToEdit.description;
+        priorityInput.value = taskToEdit.priority;
+        dueDateInput.value = taskToEdit.dueDate;
+
+        //switch to edit mode
+        editTaskId = taskId;
+
+        document.querySelector("#task-form button").textContent = "Update Task";
+
+    }
+
+    //delete task
     if (e.target.classList.contains("btn-delete")) {
         const confirmDelete = confirm("Are you sure want to delete this task?");
         if (confirmDelete) {
@@ -75,6 +113,7 @@ document.getElementById("task-list").addEventListener("click", function (e) {
         }
     }
 })
+
 
 //apply task filters
 function applyFilter(filterType) {
