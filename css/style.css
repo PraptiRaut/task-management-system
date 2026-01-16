@@ -159,6 +159,20 @@ body {
     opacity: 0.9;
 }
 
+.form-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+#cancel-edit-btn {
+    background-color: #6b7280;
+    color: #fff;
+    border: none;
+    padding: 0.5rem;
+    border-radius: var(--radius);
+    cursor: pointer;
+}
+
 .task-controls {
     display: flex;
     gap: 1rem;

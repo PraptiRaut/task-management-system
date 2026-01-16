@@ -49,7 +49,11 @@
                     <option value="Low">Low Priority</option>
                 </select>
                 <input type="date" id="task-due-date" required>
-                <button type="submit">Add Task</button>
+                <div class="form-actions">
+                    <button type="submit" id="submit-btn">Add Task</button>
+                    <button type="button" id="cancel-edit-btn" style="display: none;">Cancel</button>
+
+                </div>
             </form>
         </section>
 

@@ -6,6 +6,8 @@ const dueDateInput = document.getElementById("task-due-date");
 const filterSelect = document.getElementById("filter-tasks");
 const sortSelect = document.getElementById("sort-tasks");
 const themeToggleBtn = document.getElementById("theme-toggle");
+const cancelEditBtn = document.getElementById("cancel-edit-btn");
+const submitBtn = document.getElementById("submit-btn");
 
 //Load task on page load
 document.addEventListener("DOMContentLoaded", () => {
@@ -46,7 +48,8 @@ taskForm.addEventListener("submit", function (e) {
         });
 
         editTaskId = null;
-        document.querySelector("#task-form button").textContent = "Add Task";
+        submitBtn.textContent = "Add Task";
+        cancelEditBtn.style.display = "none";
     } else {
 
         addTask({
@@ -99,8 +102,8 @@ document.getElementById("task-list").addEventListener("click", function (e) {
         //switch to edit mode
         editTaskId = taskId;
 
-        document.querySelector("#task-form button").textContent = "Update Task";
-
+        submitBtn.textContent = "Update Task";
+        cancelEditBtn.style.display = "inline-block";
     }
 
     //delete task
@@ -186,3 +189,12 @@ function applySorting(tasks, sortType) {
 sortSelect.addEventListener("change", function () {
     applyFilter(filterSelect.value);
 })
+
+//cancel edit mode
+cancelEditBtn.addEventListener("click", function () {
+    editTaskId = null;
+    taskForm.reset();
+
+    submitBtn.textContent = "Add Task";
+    cancelEditBtn.style.display = "none";
+});
