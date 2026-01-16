@@ -162,15 +162,24 @@ body {
 .form-actions {
     display: flex;
     gap: 0.5rem;
+    margin-top: 0.5rem;
 }
 
 #cancel-edit-btn {
-    background-color: #6b7280;
-    color: #fff;
-    border: none;
-    padding: 0.5rem;
+    display: none;
+    background-color: transparent;
+    color: var(--text-secondary);
+    border: 1px solid #d1d5db;
+    padding: 0.6rem 1rem;
     border-radius: var(--radius);
+    font-size: 0.85rem;
     cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#cancel-edit-btn:hover {
+    background-color: #f3f4f6;
+    color: var(--text-primary);
 }
 
 .task-controls {
@@ -276,6 +285,23 @@ body {
     border: none;
     border-radius: var(--radius);
     cursor: pointer;
+}
+
+#submit-btn {
+    flex: 1;
+    background-color: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 0.6rem;
+    border-radius: var(--radius);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#submit-btn:hover {
+    background-color: #2563eb;
 }
 
 .btn-complete {
