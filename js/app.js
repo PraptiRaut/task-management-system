@@ -80,8 +80,11 @@ document.getElementById("task-list").addEventListener("click", function (e) {
 
     if (!taskId) return;
 
+
+    //block actions during edit mode
     if (editTaskId && !e.target.classList.contains("btn-edit")) {
         alert("Please finish editing or cancel edit first.");
+        return;
     }
 
     //complete/undo task
