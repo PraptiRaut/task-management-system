@@ -36,7 +36,8 @@ body.dark {
     --shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
 }
 
-body.dark select option {
+body.dark select option,
+body.dark #cancel-edit-btn:hover {
     color: #111827;
 }
 
