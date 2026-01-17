@@ -80,6 +80,10 @@ document.getElementById("task-list").addEventListener("click", function (e) {
 
     if (!taskId) return;
 
+    if (editTaskId && !e.target.classList.contains("btn-edit")) {
+        alert("Please finish editing or cancel edit first.");
+    }
+
     //complete/undo task
     if (e.target.classList.contains("btn-complete")) {
         toggleTaskStatus(taskId);
