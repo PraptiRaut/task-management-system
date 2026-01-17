@@ -93,6 +93,12 @@ document.getElementById("task-list").addEventListener("click", function (e) {
         const taskToEdit = tasks.find(task => task.id === taskId);
         if (!taskToEdit) return;
 
+        //prevent editing for completed tasks
+        if (taskToEdit.status === "completed") {
+            alert("This task is completed. Please undo it before editing.");
+            return;
+        }
+
         //fill form inputs
         titleInput.value = taskToEdit.title;
         descInput.value = taskToEdit.description;
