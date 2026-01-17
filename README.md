@@ -6,22 +6,25 @@ This application helps users manage daily tasks efficiently with features like t
 https://praptiraut.github.io/task-management-system/
 
 ## ✨ Features
-- Add new tasks with title, description, priority, and   due date
-- Edit and delete tasks
+- Add new tasks with title, description, priority, and due date
+- Edit, update and delete tasks
+- Cancel edt mode with improved form UX
+- Task priority system (High, Medium, Low)
+- Overdue task detection
 - Mark tasks as completed or pending
-- Persistent storage using localStorage
-- Filter tasks (All, Completed, Pending, Overdue)
+- Persistent data storage using localStorage
+- Filter tasks (All, Completed, Pending)
 - Sort tasks by priority, and due date
-- Smart task insights dashboard
+- Smart task insights dashboard (Total, Completed, Pending, Overdue)
 - Dark mode with saved preference
 - Fully responsive design
 
 ## 🛠️ Technologies Used
 - HTML5
-- CSS3
+- CSS3 (Flexbox, Responsive Design, CSS Variables)
 - JavaScript (ES6)
 - Git & GitHub
-- GitHub Pages
+- Browser LocalStorage
 
 ## 📂 Project Structure
 task-management-system/
@@ -46,12 +49,12 @@ task-management-system/
 - JavaScript DOM manipulation
 - localStorage for data persistence
 - Filtering and sorting logic
-- Event delegation
+- Event delegation for dynamic UI elements
 - Dark mode using CSS variables
 - Deploying frontend projects using GitHub Pages
 
 ## 📌 Future Improvements
-- Edit task using modal
+- Edit task using modal instead of inline form
 - Drag and drop tasks
 - Accessibility improvements
 
